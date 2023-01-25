@@ -1,0 +1,7 @@
+sensorTypeA
+sensorTypeB
+sensorTypeC
+sensorTypeD
+sensorTypeE
+sensorTypeF
+sensorTypeG
