@@ -1,0 +1,104 @@
+plugins {
+    id 'java'
+    id 'java-library'
+    id 'eclipse'
+    id 'idea'
+    id 'application'
+
+}
+
+group 'cscie88a'
+version '1.0-SNAPSHOT'
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+
+ext {
+    slf4j_version = '1.7.29'
+    logback_version = '1.2.3'
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        if (details.requested.name == 'log4j') {
+            details.useTarget "org.slf4j:log4j-over-slf4j:$slf4j_version"
+        }
+        if (details.requested.name == 'commons-logging') {
+            details.useTarget "org.slf4j:jcl-over-slf4j:$slf4j_version"
+        }
+    }
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:28.1-jre'
+    implementation 'ch.qos.logback:logback-core:1.2.3'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.10.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+    implementation 'org.apache.commons:commons-lang3:3.9'
+    implementation 'org.apache.kafka:kafka-clients:2.4.0'
+    implementation 'org.apache.kafka:kafka-streams:2.4.0'
+
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: logback_version
+    implementation group: 'ch.qos.logback', name: 'logback-core', version: logback_version
+
+//    // Use JUnit test framework
+//    testImplementation 'junit:junit:4.12'
+
+    // Use JUnit test framework
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.1'
+}
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'cscie88a.hw0.Problem1Main'
+}
+
+run {
+    // support passing -Dsystem.property=value to bootRun task
+    systemProperties = System.properties
+}
+
+task runMessageProducer(type: JavaExec) {
+    systemProperties = System.properties
+    group = "Execution"
+    description = "Runs kafka message producer"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "cscie88a.week8.generator.KafkaDataGenerator"
+}
+
+task runConsumerStream(type: JavaExec) {
+    systemProperties = System.properties
+    group = "Execution"
+    description = "Runs kafka streams"
+    classpath = sourceSets.main.runtimeClasspath
+    main = "cscie88a.week8.kafka.ConsumerStreams"
+}
+
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "PASSED", "STARTED", "FAILED", "SKIPPED", "STANDARD_OUT", "STANDARD_ERROR"
+    }
+}
+
+task("srcZip", type:Zip){
+    archiveBaseName = "sourceZip"
+    from (project.rootDir){
+        exclude ('*/*.iml')
+        exclude 'sourceZip*'
+        exclude ('*/*.zip')
+        exclude ('*/*.project')
+        exclude 'build'
+        exclude 'tools'
+        exclude '*.zip'
+        exclude '*.gradle'
+        exclude '.idea/*'
+    }
+    destinationDir project.rootDir
+}
