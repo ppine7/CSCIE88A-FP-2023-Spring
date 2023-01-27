@@ -2,16 +2,19 @@
   */
 
 package com.cscie88a
-import org.scalatest.FlatSpec
+import com.cscie88a.testutils.{StandardTest}
+class FirstSpec extends StandardTest {
 
-class FirstSpec extends FlatSpec {
-  "An empty set" should "have size 0" in {
-    assert(Set.empty.size == 0)
-  }
+"A Set" when {
+  "empty" should {
+    "have size 0" in {
+      Set.empty.size shouldBe 0
+    }
 
-  it should "produce NoSuchElementException for head" in {
-    assertThrows[NoSuchElementException] {
-      Set.empty.head
+    "produce NoSuchElementException when head is invoked" in {
+      an [NoSuchElementException] should be thrownBy {
+        Set.empty.head
+      }
     }
   }
-}
+ }}

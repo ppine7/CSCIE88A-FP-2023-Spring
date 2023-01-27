@@ -5,7 +5,7 @@ lazy val root = (project in file(".")).settings(
   inThisBuild(
     List(
       organization := "com.cscie88a",
-      scalaVersion := "2.12.10"
+      scalaVersion := "2.13.10"
     )
   ),
   name := "fp-scala-homework",
@@ -15,17 +15,16 @@ lazy val root = (project in file(".")).settings(
     "-unchecked",
     "-language:postfixOps",
     "-language:higherKinds", // HKT required for Monads and other HKT types
-    "-Ypartial-unification" // PU required for better type inference
   ),
   libraryDependencies ++= Dependencies.core ++ Dependencies.scalaTest,
-  mainClass in assembly := Some("com.cscie88a.MainApp"),
-  assemblyJarName in assembly := "fp-scala-homework.jar",
-  test in assembly := {},
+  assembly / mainClass := Some("com.cscie88a.MainApp"),
+  assembly / assemblyJarName := "fp-scala-homework.jar",
+  assembly / test := {},
   // ignore lib refs in jars
-  assemblyMergeStrategy in assembly := {
+  assembly / assemblyMergeStrategy:= {
     case PathList("META-INF", xs @ _*) => MergeStrategy.discard
     case x =>
-      val oldStrategy = (assemblyMergeStrategy in assembly).value
+      val oldStrategy = (assembly / assemblyMergeStrategy).value
       oldStrategy(x)
   }
 )
@@ -45,6 +44,7 @@ zipHomework := {
   IO.delete(new File(targetFile))
   IO.zip(
     Path.selectSubpaths(new File(bd.getAbsolutePath), fileFilter),
-    new File(targetFile)
+    new File(targetFile),
+    None
   )
 }

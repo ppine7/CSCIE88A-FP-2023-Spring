@@ -1,6 +1,6 @@
 This project provides a starter template for the scala homework assignments for CSCI-EE88A
 
-The project requires Java 11, Scala 2.12.10 and sbt 1.3.6 environment to run.
+The project requires Java 17, Scala 2.13.10 and sbt 1.8.2 environment to run.
 
 ### Getting started
 
@@ -12,6 +12,6 @@ Use the following commands to get started with your project
 
 ### License
 
-Copyright 2021, Edward Sumitra
+Copyright 2023, Edward Sumitra
 
 Licensed under the Apache License, Version 2.0.

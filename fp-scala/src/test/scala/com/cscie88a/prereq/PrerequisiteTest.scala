@@ -1,8 +1,8 @@
 package com.cscie88a.prereq
 
-import org.scalatest.{ BeforeAndAfterAll, Matchers, WordSpec }
+import com.cscie88a.testutils.{StandardTest}
 
-class PrerequisiteTest extends WordSpec with Matchers with BeforeAndAfterAll {
+class PrerequisiteTest extends StandardTest {
 
   val eps = 0.01 // specify error range for loss of precision with Double
 
