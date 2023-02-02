@@ -1,2 +1,21 @@
-.*
-!/.gitignore
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory/Users/mpopova/Marina/harvard/CSCIE88A-FP-2023-Spring/.gitignore
+build
+build/
+bin/
+tools/*.gz
+tools/*/*
+.gradle/
+.classpath
+.project
+.settings
+.idea
+*.iml
+*.ipr
+*.iws
+.DS_Store
+*/venv
+
+
