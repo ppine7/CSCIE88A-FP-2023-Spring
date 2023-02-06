@@ -1,0 +1,33 @@
+*.class
+*.log
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+#emacs
+*~
+.emacs.*
+
+#idea
+.idea
+
+# VSC
+.bloop
+.metals
+.vscode
+.bsp
+**/metals.sbt
+
+# OSX
+.DS_Store
+
+# homework files
+scalaHomework.zip
