@@ -32,7 +32,7 @@ class AnimalManagerFPTest {
     }
 
     /**
-     * the regular implementation way
+     * test calling a method that takes an FI as parameter, using the regular implementation of the FI
      */
     @Test
     public void testTrainToRun_concrete(){
@@ -42,7 +42,7 @@ class AnimalManagerFPTest {
     }
 
     /**
-     * the anonymous class way
+     * test calling a method that takes an FI as parameter, using the anonymous class as an implementation of the FI
      */
     @Test
     public void testTrainToRun_anonymous(){
@@ -148,6 +148,40 @@ class AnimalManagerFPTest {
 
         boolean result = AnimalManagerFP.doManyTricks(animalToTrainAsNamedLambda);
         assertTrue(result);
+    }
+
+
+    /**
+     * test calling a method that takes an FI as an argument;
+     * pass a method reference to a static method as the FI parameter
+     */
+    @Test
+    public void testDoTrick_methodRef_static(){
+        ITrainableFP lambdaMethodRef = CatFP::doTrickStatic;
+        boolean result = AnimalManagerFP.trainForTricksFP(lambdaMethodRef, "run");
+        assertFalse(result);
+
+        result = AnimalManagerFP.trainForTricksFP(lambdaMethodRef, "sleep");
+        assertTrue(result);
+    }
+
+    /**
+     * test calling a method that takes an FI as an argument;
+     * pass a method reference to an instance method of some class as the FI parameter
+     */
+    @Test
+    public void testDoTrick_methodRef_instance(){
+        CatFP myCat = new CatFP("Piggy");
+        myCat.setGoodMood(true);
+        ITrainableFP lambdaMethodRef = myCat::doTrick;
+        boolean result = AnimalManagerFP.trainForTricksFP(lambdaMethodRef, "run");
+        // since the mood == True - the name of the trick does not matter, the cat will do it anyway
+        assertTrue(result);
+
+        myCat.setGoodMood(false);
+        result = AnimalManagerFP.trainForTricksFP(lambdaMethodRef, "sleep");
+        // since the mood == False - the name of the trick does not matter, the cat will NOT do it
+        assertFalse(result);
     }
 
 }

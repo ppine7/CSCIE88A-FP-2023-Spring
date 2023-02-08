@@ -7,23 +7,39 @@ public class AnimalManagerFP {
 
     private static final Logger logger = LoggerFactory.getLogger(AnimalManagerFP.class);
 
+    /**
+     * method with one argument of ITrainable type - not a Functional interface
+     * @param animalToTrain
+     * @return
+     */
+
     public static boolean trainForTricksNotFP(ITrainable animalToTrain){
         String trickName = "run";
         logger.info("About to ask subject [{}] to run", animalToTrain.toString());
         return animalToTrain.doTrick(trickName);
     }
 
-    // one-argument method
-    public static boolean trainToRun(ITrainableFP animalToTrain) {
-        String trickName = "run";
-        logger.info("About to ask subject [{}] to run ...", animalToTrain.toString());
+    /**
+     * method with multiple arguments, first one is an FI ITrainableFP, second - name of the trick to do
+     * @param animalToTrain
+     * @param trickName
+     * @return
+     */
+    public static boolean trainForTricksFP(
+            ITrainableFP animalToTrain, String trickName) {
+        logger.info("About to ask subject [" + animalToTrain.toString() +
+                "] to do the trick: " + trickName);
         return animalToTrain.doTrick(trickName);
     }
 
-    // multi-argument method
-    public static boolean trainForTricks(ITrainableFP animalToTrain, String trickName) {
-        logger.info("About to ask subject [" + animalToTrain.toString() +
-                "] to do the trick: " + trickName);
+    /**
+     * method with one arguments,  FI ITrainableFP; name of the trick is hardcoded to "run"
+     * @param animalToTrain
+     * @return
+     */
+    public static boolean trainToRun(ITrainableFP animalToTrain) {
+        String trickName = "run";
+        logger.info("About to ask subject [{}] to run ...", animalToTrain.toString());
         return animalToTrain.doTrick(trickName);
     }
 
