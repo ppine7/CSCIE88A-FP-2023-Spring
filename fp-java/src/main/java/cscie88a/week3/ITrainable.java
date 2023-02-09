@@ -1,4 +1,4 @@
-package cscie88a.week2;
+package cscie88a.week3;
 
 public interface ITrainable {
 	
@@ -9,7 +9,4 @@ public interface ITrainable {
 				+ trickName + " now!");
 		return true;
 	}
-
-	// TODO HW2 P3:
-	// add singWithFriend(...) method
 }
