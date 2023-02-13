@@ -17,5 +17,6 @@ tools/*/*
 *.iws
 .DS_Store
 */venv
+*.pyc
 
 
