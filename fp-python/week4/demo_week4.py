@@ -73,8 +73,10 @@ def update_item(cat):
 
 
 def do_reduce_on_list():
-    string_list = ["cat1", "cat2", "cat3"]
-    all_cats = reduce(lambda x, y: x + '_' + y, string_list)
+    #string_list = ["cat1", "cat2", "cat3"]
+    # will not work - not the same type of objects in the list!
+    string_list = ["cat1", "cat2", "cat3", 5]
+    all_cats = reduce(lambda x, y: x + '_' + str(y), string_list)
     print("simple reduce: all_cats = {}".format(all_cats))
     my_list_animals = create_list_of_animals()
     # test reduce on list
@@ -117,6 +119,8 @@ def play_with_dictionaries():
         "ssn4": Animal("Sam", "yellow", "orange")
     }
     print("original my_dict: {}".format(my_dict))
+    #animal1 = my_dict("ssn1")
+    #animal12 = my_dict.get("ssn1")
     # add one more animal
     my_dict["ssn5"] = Animal("Sneaky", "blue", "orange")
     print("After add: original my_dict: {}".format(my_dict))
@@ -137,10 +141,10 @@ def add_one_fn(x):
 
 
 if __name__ == "__main__":
-    create_list_of_animals()
-    list_operations()
-    play_with_dictionaries()
-    do_filter_on_list()
-    do_map_on_list()
+    #create_list_of_animals()
+    #list_operations()
+    #play_with_dictionaries()
+    #do_filter_on_list()
+    #do_map_on_list()
     do_reduce_on_list()
-    play_with_tuples()
+    #play_with_tuples()
