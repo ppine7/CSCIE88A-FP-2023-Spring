@@ -100,8 +100,9 @@ def my_map_fn_no_args(int_item):
 
 
 if __name__ == "__main__":
-    do_apply_with_args()
-    do_map_parallel()
-    do_map_parallel_with_reduce()
-    do_map_parallel_async()
+    #do_apply_with_args()
+    #do_map_no_parallelization()
+    #do_map_parallel()
+    #do_map_parallel_with_reduce()
+    #do_map_parallel_async()
     do_map_parallel_async_with_callback()
