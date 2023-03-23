@@ -22,7 +22,7 @@ object Dependencies {
     "com.typesafe.akka" %% "akka-stream" % "2.6.19",
 
     // kafka streams
-    "org.apache.kafka" %% "kafka-streams-scala" % "2.7.0",
+    "org.apache.kafka" %% "kafka-streams-scala" % "3.4.0",
     "com.goyeau" %% "kafka-streams-circe" % "0.6.3",
     
     // support for typesafe configuration
