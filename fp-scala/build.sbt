@@ -5,7 +5,8 @@ lazy val root = (project in file(".")).settings(
   inThisBuild(
     List(
       organization := "com.cscie88a",
-      scalaVersion := "2.13.10"
+      scalaVersion := "2.13.10",
+      fork := true
     )
   ),
   name := "fp-scala-homework",
