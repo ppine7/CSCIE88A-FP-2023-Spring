@@ -2,8 +2,9 @@ hw8 run steps :
 Build images :   
 
 
-When you are in CSCIE88A-FP-2023-Spring
-To start the kafka containers :
+
+To start the kafka, ksqldb-server, ksqldb-cli containers from CSCIE88A-FP-2023-Spring:
+
 Run `docker-compose -f docker/docker-compose-kafka-min.yaml up -d` to run kafka and zookeeper containers
 
 To start producer of sensor data into input_topic :
