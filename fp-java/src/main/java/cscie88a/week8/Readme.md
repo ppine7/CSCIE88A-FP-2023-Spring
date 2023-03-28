@@ -2,9 +2,9 @@ hw8 run steps :
 Build images :   
 
 
-When you are in CSCIE88A-FP-2023-Spring/fp-java
+When you are in CSCIE88A-FP-2023-Spring
 To start the kafka containers :
-Run `docker-compose -f docker/docker-compose-fp-week9.yaml up -d` to run kafka and zookeeper containers
+Run `docker-compose -f docker/docker-compose-kafka-min.yaml up -d` to run kafka and zookeeper containers
 
 To start producer of sensor data into input_topic :
 Run `./gradlew runMessageProducer -Dkafka_url=localhost:9092 -Dkafka_topic=input_topic -Dno_of_events=100 -Dstreaming=y -Dstreaming_interval_sec=20 --no-daemon`
